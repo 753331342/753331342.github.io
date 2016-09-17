@@ -88,34 +88,28 @@
 
 
 
-<meta name="description" content="&amp;lt;!–more–&amp;gt;
-1.使用Sqlite3必备条件
+<meta name="description" content="1.使用Sqlite3必备条件
 1.Xcode7以前添加 libsqlite3.dylib 库，Xcode7以后为 libsqlite3.tbd
 2.添加头文件 &amp;lt;sqlite3.h&amp;gt;
 
-2.一些简单常用方法的介绍
-1.***db```**：数据库句柄，代表整个数据库实例，与文件句柄类似。12345678910*  2.**```sqlite3_open">
+2.一些简单常用方法的介绍123456781. sqlite3 *db：数据库句柄，代表整个数据库实例，与文件句柄类似。2. sqlite3_open()： 打开数据库，没有数据库时就会创建。3. s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS中Sqlite的简单使用">
 <meta property="og:url" content="http://mingsheng.pub/2016/09/17/iOS中Sqlite的简单使用/index.html">
 <meta property="og:site_name" content="小明的后宫花园">
-<meta property="og:description" content="&amp;lt;!–more–&amp;gt;
-1.使用Sqlite3必备条件
+<meta property="og:description" content="1.使用Sqlite3必备条件
 1.Xcode7以前添加 libsqlite3.dylib 库，Xcode7以后为 libsqlite3.tbd
 2.添加头文件 &amp;lt;sqlite3.h&amp;gt;
 
-2.一些简单常用方法的介绍
-1.***db```**：数据库句柄，代表整个数据库实例，与文件句柄类似。12345678910*  2.**```sqlite3_open">
-<meta property="og:updated_time" content="2016-09-17T04:29:18.000Z">
+2.一些简单常用方法的介绍123456781. sqlite3 *db：数据库句柄，代表整个数据库实例，与文件句柄类似。2. sqlite3_open()： 打开数据库，没有数据库时就会创建。3. s">
+<meta property="og:updated_time" content="2016-09-17T04:35:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS中Sqlite的简单使用">
-<meta name="twitter:description" content="&amp;lt;!–more–&amp;gt;
-1.使用Sqlite3必备条件
+<meta name="twitter:description" content="1.使用Sqlite3必备条件
 1.Xcode7以前添加 libsqlite3.dylib 库，Xcode7以后为 libsqlite3.tbd
 2.添加头文件 &amp;lt;sqlite3.h&amp;gt;
 
-2.一些简单常用方法的介绍
-1.***db```**：数据库句柄，代表整个数据库实例，与文件句柄类似。12345678910*  2.**```sqlite3_open">
+2.一些简单常用方法的介绍123456781. sqlite3 *db：数据库句柄，代表整个数据库实例，与文件句柄类似。2. sqlite3_open()： 打开数据库，没有数据库时就会创建。3. s">
 
 
 
@@ -298,33 +292,15 @@
       
 
       
-        <p>&lt;<sq>!–more–&gt;</sq></p>
-<h2 id="1-使用Sqlite3必备条件"><a href="#1-使用Sqlite3必备条件" class="headerlink" title="1.使用Sqlite3必备条件"></a>1.使用Sqlite3必备条件</h2><ul>
+        <h2 id="1-使用Sqlite3必备条件"><a href="#1-使用Sqlite3必备条件" class="headerlink" title="1.使用Sqlite3必备条件"></a>1.使用Sqlite3必备条件</h2><ul>
 <li>1.Xcode7以前添加 <strong>libsqlite3.dylib</strong> 库，Xcode7以后为 <strong>libsqlite3.tbd</strong></li>
 <li>2.添加头文件 <strong>&lt;<sq>sqlite3.h&gt;</sq></strong></li>
 </ul>
-<h2 id="2-一些简单常用方法的介绍"><a href="#2-一些简单常用方法的介绍" class="headerlink" title="2.一些简单常用方法的介绍"></a>2.一些简单常用方法的介绍</h2><ul>
-<li>1.**<figure class="highlight plain"><figcaption><span>*db```**：数据库句柄，代表整个数据库实例，与文件句柄类似。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">*  2.**```sqlite3_open()```**： 打开数据库，没有数据库时就会创建。</div><div class="line">*  3.**```sqlite3_close()```**：关闭数据库文件。</div><div class="line">*  4.**```sqlite3_exec()```**： 执行 **非查询** 的SQL语句。</div><div class="line">*  5.**```sqlite3_prepare_v2```**：检测SQL语句的合法性</div><div class="line">*  6.**```sqlite3_step()```**：在调用sqlite3_prepare后，使用这个函数在记录集中移动。</div><div class="line">*  7.**```sqlite3_stmt *stmt```**：这个相当于ODBC的Command对象，用于保存编译好的SQL语句。</div><div class="line">*  8.**```sqlite3_bind_text```**：设置占位符，防止**SQL注入**漏洞。</div><div class="line"></div><div class="line">## 3.使用介绍</div><div class="line">*  1.创表:</div></pre></td></tr></table></figure></li>
+<h2 id="2-一些简单常用方法的介绍"><a href="#2-一些简单常用方法的介绍" class="headerlink" title="2.一些简单常用方法的介绍"></a>2.一些简单常用方法的介绍</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">1. sqlite3 *db：数据库句柄，代表整个数据库实例，与文件句柄类似。</div><div class="line">2. sqlite3_open()： 打开数据库，没有数据库时就会创建。</div><div class="line">3. sqlite3_close()：关闭数据库文件。</div><div class="line">4. sqlite3_exec()： 执行 **非查询** 的SQL语句。</div><div class="line">5. sqlite3_prepare_v2：检测SQL语句的合法性</div><div class="line">6. sqlite3_step()：在调用sqlite3_prepare后，使用这个函数在记录集中移动。</div><div class="line">7. sqlite3_stmt *stmt：这个相当于ODBC的Command对象，用于保存编译好的SQL语句。</div><div class="line">8. sqlite3_bind_text：设置占位符，防止**SQL注入**漏洞。</div></pre></td></tr></table></figure>
+<h2 id="3-使用介绍"><a href="#3-使用介绍" class="headerlink" title="3.使用介绍"></a>3.使用介绍</h2><ul>
+<li>1.创表:</li>
 </ul>
-<p>// 获取应用沙盒中的数据库文件路径<br>    NSString *fileName = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@”student.sqlite”];</p>
-<pre><code>// 打开数据库(没有就创建)
-int result = sqlite3_open(fileName.UTF8String, &amp;_db); // _db为sqlite3 *类型的成员变量或全局变量
-if (result == SQLITE_OK) {
-    NSLog(@&quot;打开数据库成功&quot;);
-
-    // 创表
-    const char *sql = &quot;create table if not exists t_student (id integer primary key autoincrement, name text, age integer, password integer);&quot;;
-    char *errmsg = NULL;
-    int result = sqlite3_exec(_db, sql, NULL, NULL, &amp;errmsg);
-    if (result == SQLITE_OK) {
-        NSLog(@&quot;成功创建了student表&quot;);
-    } else {
-        NSLog(@&quot;创建student表失败:%s&quot;,errmsg);
-    }
-} else {
-    NSLog(@&quot;打开数据库失败&quot;);
-}
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">*  2.插入数据</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">// 获取应用沙盒中的数据库文件路径</div><div class="line">    NSString *fileName = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@&quot;student.sqlite&quot;];</div><div class="line">    </div><div class="line">    // 打开数据库(没有就创建)</div><div class="line">    int result = sqlite3_open(fileName.UTF8String, &amp;_db); // _db为sqlite3 *类型的成员变量或全局变量</div><div class="line">    if (result == SQLITE_OK) &#123;</div><div class="line">        NSLog(@&quot;打开数据库成功&quot;);</div><div class="line">        </div><div class="line">        // 创表</div><div class="line">        const char *sql = &quot;create table if not exists t_student (id integer primary key autoincrement, name text, age integer, password integer);&quot;;</div><div class="line">        char *errmsg = NULL;</div><div class="line">        int result = sqlite3_exec(_db, sql, NULL, NULL, &amp;errmsg);</div><div class="line">        if (result == SQLITE_OK) &#123;</div><div class="line">            NSLog(@&quot;成功创建了student表&quot;);</div><div class="line">        &#125; else &#123;</div><div class="line">            NSLog(@&quot;创建student表失败:%s&quot;,errmsg);</div><div class="line">        &#125;</div><div class="line">    &#125; else &#123;</div><div class="line">        NSLog(@&quot;打开数据库失败&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">``` </div><div class="line"></div><div class="line">*  2.插入数据</div></pre></td></tr></table></figure>
 <pre><code>for (int i = 0; i &lt; 100; i++) {
     NSString *name = [NSString stringWithFormat:@&quot;jack%d&quot;, arc4random()%100];
     int age = arc4random()%99;
@@ -523,7 +499,7 @@ if (result == SQLITE_OK) {
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-使用Sqlite3必备条件"><span class="nav-text">1.使用Sqlite3必备条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-一些简单常用方法的介绍"><span class="nav-text">2.一些简单常用方法的介绍</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-使用Sqlite3必备条件"><span class="nav-text">1.使用Sqlite3必备条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-一些简单常用方法的介绍"><span class="nav-text">2.一些简单常用方法的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-使用介绍"><span class="nav-text">3.使用介绍</span></a></li></ol></div>
             
           </div>
         </section>
