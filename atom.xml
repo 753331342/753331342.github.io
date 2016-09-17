@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mingsheng.pub/"/>
-  <updated>2016-09-17T04:17:57.000Z</updated>
+  <updated>2016-09-17T04:29:18.000Z</updated>
   <id>http://mingsheng.pub/</id>
   
   <author>
@@ -20,16 +20,16 @@
     <link href="http://mingsheng.pub/2016/09/17/iOS%E4%B8%ADSqlite%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
     <id>http://mingsheng.pub/2016/09/17/iOS中Sqlite的简单使用/</id>
     <published>2016-09-17T03:01:05.000Z</published>
-    <updated>2016-09-17T04:17:57.000Z</updated>
+    <updated>2016-09-17T04:29:18.000Z</updated>
     
     <content type="html"><![CDATA[<p>&lt;<sq>!–more–&gt;</sq></p>
-<h1 id="1-使用Sqlite3必备条件"><a href="#1-使用Sqlite3必备条件" class="headerlink" title="1.使用Sqlite3必备条件"></a>1.使用Sqlite3必备条件</h1><ol>
-<li>Xcode7以前添加 <strong>libsqlite3.dylib</strong> 库，Xcode7以后为 <strong>libsqlite3.tbd</strong></li>
-<li>添加头文件 <strong>&lt;<sq>sqlite3.h&gt;</sq></strong></li>
-</ol>
-<h1 id="2-一些简单常用方法的介绍"><a href="#2-一些简单常用方法的介绍" class="headerlink" title="2.一些简单常用方法的介绍"></a>2.一些简单常用方法的介绍</h1><ol>
-<li>**<figure class="highlight plain"><figcaption><span>*db```**：数据库句柄，代表整个数据库实例，与文件句柄类似。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">2. **```sqlite3_open()```**： 打开数据库，没有数据库时就会创建。</div><div class="line">3. **```sqlite3_close()```**：关闭数据库文件。</div><div class="line">4. **```sqlite3_exec()```**： 执行 **非查询** 的SQL语句。</div><div class="line">5. **```sqlite3_prepare_v2```**：检测SQL语句的合法性</div><div class="line">6. **```sqlite3_step()```**：在调用sqlite3_prepare后，使用这个函数在记录集中移动。</div><div class="line">7. **```sqlite3_stmt *stmt```**：这个相当于ODBC的Command对象，用于保存编译好的SQL语句。</div><div class="line">8. **```sqlite3_bind_text```**：设置占位符，防止**SQL注入**漏洞。</div><div class="line"></div><div class="line"># 3.使用介绍</div><div class="line">1.创表:</div></pre></td></tr></table></figure></li>
-</ol>
+<h2 id="1-使用Sqlite3必备条件"><a href="#1-使用Sqlite3必备条件" class="headerlink" title="1.使用Sqlite3必备条件"></a>1.使用Sqlite3必备条件</h2><ul>
+<li>1.Xcode7以前添加 <strong>libsqlite3.dylib</strong> 库，Xcode7以后为 <strong>libsqlite3.tbd</strong></li>
+<li>2.添加头文件 <strong>&lt;<sq>sqlite3.h&gt;</sq></strong></li>
+</ul>
+<h2 id="2-一些简单常用方法的介绍"><a href="#2-一些简单常用方法的介绍" class="headerlink" title="2.一些简单常用方法的介绍"></a>2.一些简单常用方法的介绍</h2><ul>
+<li>1.**<figure class="highlight plain"><figcaption><span>*db```**：数据库句柄，代表整个数据库实例，与文件句柄类似。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">*  2.**```sqlite3_open()```**： 打开数据库，没有数据库时就会创建。</div><div class="line">*  3.**```sqlite3_close()```**：关闭数据库文件。</div><div class="line">*  4.**```sqlite3_exec()```**： 执行 **非查询** 的SQL语句。</div><div class="line">*  5.**```sqlite3_prepare_v2```**：检测SQL语句的合法性</div><div class="line">*  6.**```sqlite3_step()```**：在调用sqlite3_prepare后，使用这个函数在记录集中移动。</div><div class="line">*  7.**```sqlite3_stmt *stmt```**：这个相当于ODBC的Command对象，用于保存编译好的SQL语句。</div><div class="line">*  8.**```sqlite3_bind_text```**：设置占位符，防止**SQL注入**漏洞。</div><div class="line"></div><div class="line">## 3.使用介绍</div><div class="line">*  1.创表:</div></pre></td></tr></table></figure></li>
+</ul>
 <p>// 获取应用沙盒中的数据库文件路径<br>    NSString *fileName = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@”student.sqlite”];</p>
 <pre><code>// 打开数据库(没有就创建)
 int result = sqlite3_open(fileName.UTF8String, &amp;_db); // _db为sqlite3 *类型的成员变量或全局变量
@@ -48,7 +48,7 @@ if (result == SQLITE_OK) {
 } else {
     NSLog(@&quot;打开数据库失败&quot;);
 }
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">2.插入数据</div></pre></td></tr></table></figure>
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">*  2.插入数据</div></pre></td></tr></table></figure>
 <pre><code>for (int i = 0; i &lt; 100; i++) {
     NSString *name = [NSString stringWithFormat:@&quot;jack%d&quot;, arc4random()%100];
     int age = arc4random()%99;
@@ -62,7 +62,7 @@ if (result == SQLITE_OK) {
         NSLog(@&quot;添加数据失败&quot;);
     }
 }
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">3.查询数据</div></pre></td></tr></table></figure>
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">*  3.查询数据</div></pre></td></tr></table></figure>
 <p>if (self.nameTextField.text.length &gt; 0) {<br>        // 标识查询结果<br>        BOOL queryResult = NO;</p>
 <pre><code>    // 定义SQL语句
     NSString *sql = [NSString stringWithFormat:@&quot;select * from t_student where name = ? and password = ?;&quot;];
@@ -114,7 +114,7 @@ if (result == SQLITE_OK) {
     <summary type="html">
     
       &lt;p&gt;&amp;lt;&lt;sq&gt;!–more–&amp;gt;&lt;/sq&gt;&lt;/p&gt;
-&lt;h1 id=&quot;1-使用Sqlite3必备条件&quot;&gt;&lt;a href=&quot;#1-使用Sqlite3必备条件&quot; class=&quot;headerlink&quot; title=&quot;1.使用Sqlite3必备条件&quot;&gt;&lt;/a&gt;1.使用Sqlit
+&lt;h2 id=&quot;1-使用Sqlite3必备条件&quot;&gt;&lt;a href=&quot;#1-使用Sqlite3必备条件&quot; class=&quot;headerlink&quot; title=&quot;1.使用Sqlite3必备条件&quot;&gt;&lt;/a&gt;1.使用Sqlit
     
     </summary>
     
@@ -126,10 +126,9 @@ if (result == SQLITE_OK) {
     <link href="http://mingsheng.pub/2016/09/07/%E7%AB%9E%E6%8A%80%E4%B8%96%E7%95%8C%E6%97%A0%E7%BA%BF%E7%A0%94%E5%8F%91%E4%B8%AD%E5%BF%83%E5%AE%A2%E6%88%B7%E7%AB%AFC++%E7%AC%94%E8%AF%95%E9%A2%98/"/>
     <id>http://mingsheng.pub/2016/09/07/竞技世界无线研发中心客户端C++笔试题/</id>
     <published>2016-09-07T13:16:48.000Z</published>
-    <updated>2016-09-17T03:21:54.000Z</updated>
+    <updated>2016-09-17T04:23:37.000Z</updated>
     
-    <content type="html"><![CDATA[<p>&lt;<sq>!–more–&gt;</sq></p>
-<h1 id="一、请列举标准C-C-的基本变量类型（例如：int），以及它们的字节长度。"><a href="#一、请列举标准C-C-的基本变量类型（例如：int），以及它们的字节长度。" class="headerlink" title="一、请列举标准C/C++的基本变量类型（例如：int），以及它们的字节长度。"></a>一、请列举标准C/C++的基本变量类型（例如：int），以及它们的字节长度。</h1><h1 id="二、将二进制数110101011000转换成八进制和十六进制数。"><a href="#二、将二进制数110101011000转换成八进制和十六进制数。" class="headerlink" title="二、将二进制数110101011000转换成八进制和十六进制数。"></a>二、将二进制数110101011000转换成八进制和十六进制数。</h1><h1 id="三、请写出下面几个表达式的结果，答案可以用10进制或16进制书写。"><a href="#三、请写出下面几个表达式的结果，答案可以用10进制或16进制书写。" class="headerlink" title="三、请写出下面几个表达式的结果，答案可以用10进制或16进制书写。"></a>三、请写出下面几个表达式的结果，答案可以用10进制或16进制书写。</h1><ul>
+    <content type="html"><![CDATA[<h1 id="一、请列举标准C-C-的基本变量类型（例如：int），以及它们的字节长度。"><a href="#一、请列举标准C-C-的基本变量类型（例如：int），以及它们的字节长度。" class="headerlink" title="一、请列举标准C/C++的基本变量类型（例如：int），以及它们的字节长度。"></a>一、请列举标准C/C++的基本变量类型（例如：int），以及它们的字节长度。</h1><h1 id="二、将二进制数110101011000转换成八进制和十六进制数。"><a href="#二、将二进制数110101011000转换成八进制和十六进制数。" class="headerlink" title="二、将二进制数110101011000转换成八进制和十六进制数。"></a>二、将二进制数110101011000转换成八进制和十六进制数。</h1><h1 id="三、请写出下面几个表达式的结果，答案可以用10进制或16进制书写。"><a href="#三、请写出下面几个表达式的结果，答案可以用10进制或16进制书写。" class="headerlink" title="三、请写出下面几个表达式的结果，答案可以用10进制或16进制书写。"></a>三、请写出下面几个表达式的结果，答案可以用10进制或16进制书写。</h1><ul>
 <li>oxaa | 0x55</li>
 <li>15 &amp; 240</li>
 <li>10 ^ 12</li>
@@ -188,8 +187,7 @@ if (result == SQLITE_OK) {
     
     <summary type="html">
     
-      &lt;p&gt;&amp;lt;&lt;sq&gt;!–more–&amp;gt;&lt;/sq&gt;&lt;/p&gt;
-&lt;h1 id=&quot;一、请列举标准C-C-的基本变量类型（例如：int），以及它们的字节长度。&quot;&gt;&lt;a href=&quot;#一、请列举标准C-C-的基本变量类型（例如：int），以及它们的字节长度。&quot; class=&quot;heade
+      &lt;h1 id=&quot;一、请列举标准C-C-的基本变量类型（例如：int），以及它们的字节长度。&quot;&gt;&lt;a href=&quot;#一、请列举标准C-C-的基本变量类型（例如：int），以及它们的字节长度。&quot; class=&quot;headerlink&quot; title=&quot;一、请列举标准C/C++的基本变量类
     
     </summary>
     
